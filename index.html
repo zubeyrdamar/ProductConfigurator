@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>Image Module</title>
+
+    <!-- Bootstrap core CSS -->
+    <!-- CSS only -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous"
+    />
+    <!-- JavaScript Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body onload="buildImagesMenu();">
+    <div class="m-module">
+      <img class="outer-image" id="outer-image" src="./media/walls/w1.jpg" />
+      <div class="inner-image-container">
+        <img
+          class="inner-image"
+          id="inner-image"
+          src="./media/frames/ephesus/1.png"
+        />
+      </div>
+      <div id="background-color"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-8"></div>
+          <div class="col-4 main">
+            <div class="row">
+              <div class="color-palette-container" id="color-palette-container">
+                <h4>Wall Color Selection</h4>
+                <div class="color-palette">
+                  <div id="color-picker"></div>
+                  <div class="color-codes-card">
+                    <div class="rgba-code-container">
+                      <div class="row">
+                        <div class="col-4">
+                          <div class="input-box">
+                            <input
+                              type="text"
+                              class="rgba-code"
+                              id="red-code"
+                              required="required"
+                              onchange="onInputChangeHandler('R')"
+                            />
+                            <span>R</span>
+                          </div>
+                        </div>
+                        <div class="col-4">
+                          <div class="input-box">
+                            <input
+                              type="text"
+                              class="rgba-code"
+                              id="green-code"
+                              required="required"
+                              onchange="onInputChangeHandler('G')"
+                            />
+                            <span>G</span>
+                          </div>
+                        </div>
+                        <div class="col-4">
+                          <div class="input-box">
+                            <input
+                              type="text"
+                              class="rgba-code"
+                              id="blue-code"
+                              required="required"
+                              onchange="onInputChangeHandler('B')"
+                            />
+                            <span>B</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="hex-code-container">
+                      <div class="row">
+                        <div class="col-6">
+                          <div class="input-box">
+                            <input
+                              type="text"
+                              class="hex-code"
+                              id="hex-code"
+                              required="required"
+                              onchange="onInputChangeHandler('hex')"
+                            />
+                            <span>Hex</span>
+                          </div>
+                        </div>
+                        <div class="col-6">
+                          <button class="btn btn-dark apply-btn" id="apply-btn">
+                            Apply
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="color-card">
+                  <p>Pick wall color</p>
+                  <ul>
+                    <li class="color-card-item" id="c-ffffff"></li>
+                    <li class="color-card-item" id="c-ef5350"></li>
+                    <li class="color-card-item" id="c-66bb6a"></li>
+                    <li class="color-card-item" id="c-ffca28"></li>
+                    <li class="color-card-item" id="c-42a5f5"></li>
+                    <li class="color-card-item" id="c-bdbdbd"></li>
+                    <li class="color-card-item" id="c-000000"></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="walls-container" id="walls-container">
+                <hr />
+                <h4>Wall Paper Selection</h4>
+                <input
+                  type="file"
+                  id="input-upload-background"
+                  accept="image/*"
+                />
+                <label for="input-upload-background" class="label-wall">
+                  <img src="./media/icons/ic-upload.png" class="icon-image" />
+                  Add Wall From My Device
+                </label>
+                <div id="walls"></div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="frames-container" id="frames-container">
+                <hr />
+                <div class="custom-dropdown">
+                  <div class="custom-dropdown-header">
+                    <span class="custom-dropdown-header-text"
+                      >Athene Switch & Socket</span
+                    >
+                  </div>
+                  <ul class="custom-dropdown-options">
+                    <li class="option">
+                      <span class="option-text">Athene Switch & Socket</span>
+                    </li>
+                    <li class="option">
+                      <span class="option-text">Athene B4</span>
+                    </li>
+                    <li class="option">
+                      <span class="option-text">Ephesus</span>
+                    </li>
+                    <li class="option">
+                      <span class="option-text">EOZ</span>
+                    </li>
+                  </ul>
+                </div>
+                <div id="frames"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Wall & Frames -->
+    <script>
+      // Constant Images
+      var walls = [
+        "./media/walls/w1.jpg",
+        "./media/walls/w2.jpg",
+        "./media/walls/w3.jpg",
+        "./media/walls/w4.jpg",
+        "./media/walls/w5.jpg",
+        "./media/walls/w6.jpg",
+        "./media/walls/w7.jpg",
+        "./media/walls/w8.jpg",
+        "./media/walls/w9.jpg",
+        "./media/walls/w10.jpg",
+        "./media/walls/w11.jpg",
+        "./media/walls/w12.jpg",
+        "./media/walls/w13.jpg",
+      ];
+
+      var athene_switch = [
+        "./media/frames/athene/switch/1.png",
+        "./media/frames/athene/switch/2.png",
+        "./media/frames/athene/switch/3.png",
+        "./media/frames/athene/switch/4.png",
+        "./media/frames/athene/switch/5.png",
+        "./media/frames/athene/switch/6.png",
+        "./media/frames/athene/switch/7.png",
+        "./media/frames/athene/switch/8.png",
+        "./media/frames/athene/switch/9.png",
+      ];
+      var athene_b4 = [
+        "./media/frames/athene/switch/10.png",
+        "./media/frames/athene/switch/11.jpg",
+        "./media/frames/athene/switch/12.png",
+        "./media/frames/athene/switch/13.png",
+        "./media/frames/athene/switch/14.png",
+        "./media/frames/athene/switch/15.png",
+        "./media/frames/athene/switch/16.png",
+        "./media/frames/athene/switch/17.png",
+      ];
+      var ephesus = [
+        "./media/frames/ephesus/1.png",
+        "./media/frames/ephesus/2.png",
+        "./media/frames/ephesus/3.png",
+        "./media/frames/ephesus/4.png",
+        "./media/frames/ephesus/5.png",
+        "./media/frames/ephesus/6.png",
+      ];
+      var eoz = ["./media/frames/eoz/1.png"];
+
+      function buildImagesMenu() {
+        buildWallImages();
+        buildAtheneSwitchImages();
+      }
+
+      function buildWallImages() {
+        for (var i = 0; i < walls.length; i++) {
+          var img = document.createElement("img");
+          img.src = walls[i];
+          img.setAttribute("onclick", "changeOuterImage('" + walls[i] + "');");
+          document.getElementById("walls").appendChild(img);
+        }
+      }
+      function buildAtheneSwitchImages() {
+        clearFrames();
+        for (var i = 0; i < athene_switch.length; i++) {
+          var img = document.createElement("img");
+          img.src = athene_switch[i];
+          img.setAttribute(
+            "onclick",
+            "changeInnerImage('" + athene_switch[i] + "');"
+          );
+          document.getElementById("frames").appendChild(img);
+        }
+      }
+      function buildAtheneB4Images() {
+        clearFrames();
+        for (var i = 0; i < athene_b4.length; i++) {
+          var img = document.createElement("img");
+          img.src = athene_b4[i];
+          img.setAttribute(
+            "onclick",
+            "changeInnerImage('" + athene_b4[i] + "');"
+          );
+          document.getElementById("frames").appendChild(img);
+        }
+      }
+      function buildEphesusImages() {
+        clearFrames();
+        for (var i = 0; i < ephesus.length; i++) {
+          var img = document.createElement("img");
+          img.src = ephesus[i];
+          img.setAttribute(
+            "onclick",
+            "changeInnerImage('" + ephesus[i] + "');"
+          );
+          document.getElementById("frames").appendChild(img);
+        }
+      }
+      function buildEozImages() {
+        clearFrames();
+        for (var i = 0; i < eoz.length; i++) {
+          var img = document.createElement("img");
+          img.src = eoz[i];
+          img.setAttribute("onclick", "changeInnerImage('" + eoz[i] + "');");
+          document.getElementById("frames").appendChild(img);
+        }
+      }
+
+      function clearFrames() {
+        document.getElementById("frames").innerHTML = "";
+      }
+
+      var outer_image = document.getElementById("outer-image");
+      var inner_image = document.getElementById("inner-image");
+
+      function changeOuterImage(source) {
+        outer_image.src = source;
+        let background_color = document.getElementById("background-color");
+        background_color.style.zIndex = -1;
+      }
+      function changeInnerImage(source) {
+        inner_image.src = source;
+      }
+
+      // Image From User
+      let uploadButtton = document.getElementById("input-upload-background");
+      uploadButtton.onchange = () => {
+        let reader = new FileReader();
+        reader.readAsDataURL(uploadButtton.files[0]);
+        reader.onload = () => {
+          outer_image.setAttribute("src", reader.result);
+          background_color.style.zIndex = -1;
+        };
+      };
+
+      // Dropdown
+      const dropdown = document.querySelector(".custom-dropdown");
+      const dropdown_header = dropdown.querySelector(".custom-dropdown-header");
+      const dropdown_header_text = dropdown.querySelector(
+        ".custom-dropdown-header-text"
+      );
+      const options = dropdown.querySelectorAll(".option");
+
+      dropdown_header.addEventListener("click", () =>
+        dropdown.classList.toggle("active")
+      );
+
+      options.forEach((option) => {
+        option.addEventListener("click", () => {
+          let selected_option = option.querySelector(".option-text").innerText;
+          dropdown_header_text.innerText = selected_option;
+          dropdown.classList.remove("active");
+          switch (selected_option) {
+            case "Athene Switch & Socket":
+              buildAtheneSwitchImages();
+              break;
+            case "Athene B4":
+              buildAtheneB4Images();
+              break;
+            case "Ephesus":
+              buildEphesusImages();
+              break;
+            case "EOZ":
+              buildEozImages();
+              break;
+          }
+        });
+      });
+    </script>
+
+    <!-- Color Palette -->
+    <script src="https://cdn.jsdelivr.net/npm/@jaames/iro@5"></script>
+
+    <!-- Color Functions -->
+    <script>
+      // Common Constants
+      var hex_code = document.getElementById("hex-code");
+      var red_value = document.getElementById("red-code");
+      var green_value = document.getElementById("green-code");
+      var blue_value = document.getElementById("blue-code");
+      let background_color = document.getElementById("background-color");
+
+      // COLOR PALETTE
+      let colorIndicator = document.getElementById("color-indicator");
+      const colorPicker = new iro.ColorPicker("#color-picker", {
+        layout: [
+          {
+            component: iro.ui.Box,
+          },
+          // this slider will always reflect the color at index 2
+          {
+            component: iro.ui.Slider,
+            options: {
+              sliderType: "hue",
+            },
+          },
+        ],
+        width: 120,
+        layoutDirection: "horizontal",
+        color: "#fff",
+      });
+      colorPicker.on("color:change", function (color) {
+        background_color.style.zIndex = 0;
+        background_color.style.backgroundColor = color.hexString;
+
+        document.getElementById("hex-code").value = color.hexString;
+
+        // hex to rgb
+        var result = hexToRgb(color.hexString);
+        red_value.value = result.r;
+        green_value.value = result.g;
+        blue_value.value = result.b;
+      });
+
+      // COLOR PICKER
+      const color_items = document.querySelectorAll(".color-card-item");
+      color_items.forEach((item) => {
+        item.addEventListener("click", function () {
+          var color_value = item.id;
+          var mColor = color_value.substring(2, color_value.length);
+          background_color.style.zIndex = 0;
+          background_color.style.backgroundColor = "#" + mColor;
+          let hex_color_value = color_value.substring(2, color_value.length);
+          let rgb_color_values = hexToRgb(hex_color_value);
+          setColorsToInputs(
+            rgb_color_values.r,
+            rgb_color_values.g,
+            rgb_color_values.b,
+            hex_color_value
+          );
+          setColorsToColorPalette(hex_color_value);
+        });
+      });
+
+      // ON INPUT CHANGE -> SET 'RGB TO HEX' OR 'HEX TO RGB' VALUES
+      function onInputChangeHandler(changed_input) {
+        if (changed_input === "hex") {
+          if (hex_code.value.charAt(0) !== "#") {
+            hex_code.value = "#" + hex_code.value;
+          }
+
+          if (hex_code.value.length === 7) {
+            // hex to rgb
+            var result = hexToRgb(hex_code.value);
+            red_value.value = result.r;
+            green_value.value = result.g;
+            blue_value.value = result.b;
+            setColorsToColorPalette(hex_code.value);
+          }
+        } else {
+          if (red_value.value && green_value.value && blue_value.value) {
+            hex_code.value = rgbToHex(
+              parseInt(red_value.value),
+              parseInt(green_value.value),
+              parseInt(blue_value.value)
+            );
+
+            setColorsToColorPalette(hex_code.value);
+          }
+        }
+      }
+
+      // APPLY BUTTON
+      const apply_btn = document.getElementById("apply-btn");
+      apply_btn.addEventListener("click", function () {
+        let background_color = document.getElementById("background-color");
+        if (hex_code.value) {
+          // hex code shouldn't include '#'
+          background_color.style.zIndex = 0;
+          let m_code;
+          if (hex_code.value.charAt(0) === "#") {
+            m_code = hex_code.value;
+          } else {
+            m_code = "#" + hex_code.value;
+          }
+          background_color.style.backgroundColor = m_code;
+          setColorsToColorPalette(m_code);
+        } else if (red_value.value && green_value.value && blue_value.value) {
+          background_color.style.zIndex = 0;
+          let hex_color_value = rgbToHex(
+            red_value.value,
+            green_value.value,
+            blue_value.value
+          );
+          background_color.style.backgroundColor = hex_color_value;
+          setColorsToColorPalette(hex_color_value);
+        }
+      });
+
+      // SET INPUTS
+      function setColorsToInputs(r, g, b, hex) {
+        if (hex.charAt(0) !== "#") {
+          hex = "#" + hex;
+        }
+
+        hex_code.value = hex;
+        red_value.value = r;
+        green_value.value = g;
+        blue_value.value = b;
+      }
+      function setColorsToColorPalette(hex) {
+        colorPicker.color.hexString = hex;
+      }
+
+      // ------ COLOR CODE SWAPS ------- //
+      // HEX TO RGB
+      function hexToRgb(hex) {
+        var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+        return result
+          ? {
+              r: parseInt(result[1], 16),
+              g: parseInt(result[2], 16),
+              b: parseInt(result[3], 16),
+            }
+          : null;
+      }
+
+      // RGB TO HEX
+      function componentToHex(c) {
+        var hex = c.toString(16);
+        return hex.length == 1 ? "0" + hex : hex;
+      }
+      function rgbToHex(r, g, b) {
+        return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
+      }
+    </script>
+  </body>
+</html>
